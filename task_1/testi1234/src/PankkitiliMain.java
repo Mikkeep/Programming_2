@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
 public class PankkitiliMain {
+
     public static void main(String[] args) {
+
         Pankkitili bank = new Pankkitili("", "", 0);
         Scanner input = new Scanner(System.in);
         double tempBal;
@@ -16,9 +18,10 @@ public class PankkitiliMain {
         else bank.setBalance(tempBal);
         System.out.println("Account is owned by: " + bank.getUser());
         System.out.println("Account number is : " + bank.getNum());
-        System.out.println("Account balance is : " + bank.getBal() + " €");
-
+        System.out.println("Account balance is : " + bank.getBal() + " €"); //visibility of the euro sign depends on the terminal shell used
+//  Main program loop
         while (true) {
+
             System.out.println("Choose an option to either withdraw or deposit money from your account");
             System.out.println("1. Deposit money");
             System.out.println("2. Withdraw money");
@@ -28,6 +31,7 @@ public class PankkitiliMain {
             try {
             choice = input.nextInt();
                 switch (choice) {
+//  Switch case to choose an option
                     case 1 -> {
                         System.out.println("Enter the deposit amount please: ");
                         //tempBal variable reuse to collect input
@@ -60,6 +64,7 @@ public class PankkitiliMain {
                     default -> System.out.println("Not a valid choice, try again please");
                 }
             }
+//  Catching errors while choosing the option
             catch (java.util.InputMismatchException error) {
                 System.out.println("Not a valid input, do not break me and only input numbers!");
             }
