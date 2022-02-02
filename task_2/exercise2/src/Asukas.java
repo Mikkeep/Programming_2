@@ -1,13 +1,13 @@
 public class Asukas {
 
     private String name;
-    private String bdate;
+    private String bDate;
 
-    public Asukas(String name, String bdate) {
+/*    public Asukas(String name, String bdate) {
         this.name = name;
         this.bdate = bdate;
     }
-
+*/
     public String getName() {
         return name;
     }
@@ -17,18 +17,18 @@ public class Asukas {
     }
 
     public String getBdate() {
-        return bdate;
+        return bDate;
     }
 
-    public void setBdate(String bdate) {
-        this.bdate = bdate;
+    public void setBdate(String bDate) {
+        this.bDate = bDate;
     }
 
     @Override
     public String toString() {
         return "{" +
-                "name='" + name + '\'' +
-                ", birthdate='" + bdate + '\'' +
+                "names=" + name +
+                ", birthdays=" + bDate +
                 '}';
     }
 }

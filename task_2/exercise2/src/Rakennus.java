@@ -6,41 +6,25 @@ public class Rakennus {
 
     private double area;
     private double rooms;
-    private double residents;
+
     private Asukas asukas;
 
-    public Rakennus(double area, double rooms, double residents) {
+    public Rakennus(double area, double rooms) {
         this.area = area;
         this.rooms = rooms;
-        this.residents = residents;
-        this.asukas = new Asukas("Matti Meikalainen", "");
-        asukas.setBdate("15.08.1996");
-
-/*        Scanner input = new Scanner(System.in);
-        if (residents < 1) {
-            System.out.println("Cannot add less than 1 resident to a building");
-            this.residents = 0;
-            // skips the for loop with 0 members if the input is faulty
-        }
-        else
-            this.residents = residents;
-        String name;
-        String bDate;
-        for (int i = 0; i < this.residents; i++) {
-            System.out.println("Give residents name please: ");
-            name = input.nextLine();
-            System.out.println("Give the resident birthdate please: ");
-            bDate = input.nextLine();
-            asukkaat.add(new Asukas(name, bDate));
-        }
-*/    }
+        this.asukas = new Asukas();
+    }
 
     public double getArea() {
         return area;
     }
 
     public void setArea(double area) {
-        this.area = area;
+        if (area < 0) {
+            System.out.println("The area of the plot cannot be negative!");
+        }
+        else
+            this.area = area;
     }
 
     public double getRooms() {
@@ -51,20 +35,20 @@ public class Rakennus {
         this.rooms = rooms;
     }
 
-    public double getResidents() {
-        return residents;
+    public void setName(String Name) {
+        asukas.setName(Name);
     }
 
-    public void setResidents(double residents) {
-        this.residents = residents;
+    public void setBdate(String bDate) {
+        asukas.setBdate(bDate);
     }
 
     @Override
     public String toString() {
-        return "Rakennus{" +
+        return "{" +
                 "area=" + area +
                 ", rooms=" + rooms +
-                ", asukkaat=" + asukas +
+                ",\nresidents=" + asukas +
                 '}';
     }
 }
