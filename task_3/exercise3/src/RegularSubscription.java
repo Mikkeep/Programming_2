@@ -1,3 +1,5 @@
+import java.util.InputMismatchException;
+
 class RegularSubscription extends Subscription {
 
     private int tilauksenKesto;
@@ -11,11 +13,17 @@ class RegularSubscription extends Subscription {
     }
 
     public void setTilauksenKesto(int tilauksenKesto) {
-        if (tilauksenKesto < 1) {
-            System.out.println("You must order the magazine for at least 1 month");
+        try {
+            if (tilauksenKesto < 1) {
+                System.out.println("You must order the magazine for at least 1 month");
+                System.exit(1);
+            }
+            this.tilauksenKesto = tilauksenKesto;
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Please input only even months as integers");
             System.exit(1);
         }
-        this.tilauksenKesto = tilauksenKesto;
     }
 
     public double getSubscriptionPrize() {
@@ -32,17 +40,5 @@ class RegularSubscription extends Subscription {
                 "Months subscribed : " + getTilauksenKesto() + "\n" +
                 "Prize of the subscription: " + getSubscriptionPrize() + "\n" +
                 "");
-    }
-
-    @Override
-    public String toString() {
-        return  "" +
-                "Subscription type: " + getClass().getName() + "\n" +
-                "Name of magazine: " + getLehden_nimi() + "\n" +
-                "Subscriber name: " + getTilaajan_nimi() + "\n" +
-                "Billing address: " + getToimitusosoite() + "\n" +
-                "Months subscribed : " + getTilauksenKesto() + "\n" +
-                "Prize of the subscription: " + getSubscriptionPrize() + "\n" +
-                "";
     }
 }

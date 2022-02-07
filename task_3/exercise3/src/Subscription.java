@@ -1,3 +1,5 @@
+import java.util.InputMismatchException;
+
 abstract class Subscription {
 
     private String lehden_nimi;
@@ -41,25 +43,18 @@ abstract class Subscription {
     }
 
     public void setKuukausihinta(double kuukausihinta) {
-        if (kuukausihinta < 0) {
-            System.out.println("The monthly price cannot be less than 0");
+        try {
+            if (kuukausihinta < 0) {
+                System.out.println("The monthly price cannot be less than 0");
+                System.exit(1);
+            }
+            this.kuukausihinta = kuukausihinta;
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Please input only numbers as price");
             System.exit(1);
         }
-        this.kuukausihinta = kuukausihinta;
     }
 
     public abstract void printInvoice();
-
-    @Override
-    public String toString() {
-        return "Subscription{" +
-                "lehden_nimi='" + lehden_nimi + '\'' +
-                ", tilaajan_nimi='" + tilaajan_nimi + '\'' +
-                ", toimitusosoite='" + toimitusosoite + '\'' +
-                ", kuukausihinta=" + kuukausihinta +
-                '}';
-    }
-
-
-
 }

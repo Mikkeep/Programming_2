@@ -1,3 +1,6 @@
+import java.awt.desktop.SystemSleepEvent;
+import java.util.InputMismatchException;
+
 class StandingSubscription extends Subscription{
 
     private int alennusprosentti;
@@ -11,11 +14,17 @@ class StandingSubscription extends Subscription{
     }
 
     public void setAlennusprosentti(int alennusprosentti) {
-        if (alennusprosentti < 0 || alennusprosentti > 100) {
-            System.out.println("Percentages are input in a ( 0 - 100 ) % format");
+        try {
+            if (alennusprosentti < 0 || alennusprosentti > 100) {
+                System.out.println("Percentages are input in a ( 0 - 100 ) % format");
+                System.exit(1);
+            }
+            this.alennusprosentti = alennusprosentti;
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Please input only even percentages as integers");
             System.exit(1);
         }
-        this.alennusprosentti = alennusprosentti;
     }
 
     public double getSubscriptionPrize() {
@@ -32,17 +41,5 @@ class StandingSubscription extends Subscription{
                 "Months subscribed : " + 12 + "\n" +
                 "Prize of the subscription: " + getSubscriptionPrize() + "\n" +
                 "");
-    }
-
-    @Override
-    public String toString() {
-        return "" +
-                "Subscription type: " + getClass().getName() + "\n" +
-                "Name of magazine: " + getLehden_nimi() + "\n" +
-                "Subscriber name: " + getTilaajan_nimi() + "\n" +
-                "Billing address: " + getToimitusosoite() + "\n" +
-                "Months subscribed : " + 12 + "\n" +
-                "Prize of the subscription: " + getSubscriptionPrize() + "\n" +
-                "";
     }
 }
