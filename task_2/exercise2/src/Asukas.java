@@ -3,11 +3,11 @@ public class Asukas {
     private String name;
     private String bDate;
 
-/*    public Asukas(String name, String bdate) {
+    public Asukas(String name, String bdate) {
         this.name = name;
-        this.bdate = bdate;
+        this.bDate = bdate;
     }
-*/
+
     public String getName() {
         return name;
     }

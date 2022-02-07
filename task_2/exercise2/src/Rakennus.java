@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class Rakennus {
 
     private double area;
@@ -12,7 +8,7 @@ public class Rakennus {
     public Rakennus(double area, double rooms) {
         this.area = area;
         this.rooms = rooms;
-        this.asukas = new Asukas();
+        this.asukas = new Asukas("", "");
     }
 
     public double getArea() {
@@ -35,11 +31,11 @@ public class Rakennus {
         this.rooms = rooms;
     }
 
-    public void setName(String Name) {
+    public void setResidentsName(String Name) {
         asukas.setName(Name);
     }
 
-    public void setBdate(String bDate) {
+    public void setResidentsBdate(String bDate) {
         asukas.setBdate(bDate);
     }
 

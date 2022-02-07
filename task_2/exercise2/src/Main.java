@@ -15,15 +15,28 @@ public class Main {
 
         System.out.println("Enter the area of the plot please: ");
         double area = input.nextDouble();
+        if (area < 0) {
+            System.out.println("Area cannot be negative");
+            System.exit(1);
+        }
 
         System.out.println("Enter the area of the building: ");
         double areaBuilding = input.nextDouble();
+        if (areaBuilding < 0) {
+            System.out.println("Area cannot be negative");
+        }
 
         System.out.println("Enter the amount of rooms: ");
         double rooms = input.nextDouble();
+        if (rooms < 0) {
+            System.out.println("Amount of rooms cannot be negative");
+        }
 
         System.out.println("Enter the amount of residents: ");
         double residents = input.nextDouble();
+        if (residents < 0) {
+            System.out.println("Amount of residents cannot be negative");
+        }
 
         // input to take newline, since next double does not take it
         // otherwise skips next string input
@@ -49,8 +62,8 @@ public class Main {
         Rakennus building = new Rakennus(0, 0);
         building.setArea(areaBuilding);
         building.setRooms(rooms);
-        building.setName(resNames.toString());
-        building.setBdate(resBDays.toString());
+        building.setResidentsName(resNames.toString());
+        building.setResidentsBdate(resBDays.toString());
 
         Tontti plot = new Tontti("", "", 0, building);
         plot.setName(plotName);
@@ -58,6 +71,8 @@ public class Main {
         plot.setArea(area);
 
         System.out.println(plot);
+
+        input.close();
 
     }
 }
