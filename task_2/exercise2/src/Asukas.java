@@ -1,34 +1,36 @@
+import java.util.List;
+
 public class Asukas {
 
-    private String name;
-    private String bDate;
+    private List<String> names;
+    private List<String> bDates;
 
-    public Asukas(String name, String bdate) {
-        this.name = name;
-        this.bDate = bdate;
+    public Asukas(List<String> names, List<String> bDates) {
+        this.names = names;
+        this.bDates = bDates;
     }
 
-    public String getName() {
-        return name;
+    public List<String> getName() {
+        return names;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(List<String> names) {
+        this.names = names;
     }
 
-    public String getBdate() {
-        return bDate;
+    public List<String> getBdate() {
+        return bDates;
     }
 
-    public void setBdate(String bDate) {
-        this.bDate = bDate;
+    public void setBdate(List<String> bDates) {
+        this.bDates = bDates;
     }
 
     @Override
     public String toString() {
-        return "{" +
-                "names=" + name +
-                ", birthdays=" + bDate +
-                '}';
+        return "" +
+                "names=" + names +
+                ", birthdays=" + bDates + "\n" +
+                "";
     }
 }
