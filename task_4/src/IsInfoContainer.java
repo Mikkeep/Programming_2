@@ -16,20 +16,30 @@ public class IsInfoContainer {
     }
 
     public void getInsuranceOverThreshold(double threshold) {
+        int counter = 0;
         for (InsuranceInfo insurance: insuranceListing
         ) {
             if (insurance.getInsuranceValue() >= threshold) {
                 System.out.println("[Property information] {\n" + insurance.getProperty() + "\n" + "The insurance value: " + insurance.getInsuranceValue() + "\n}\n");
+                counter += 1;
             }
+        }
+        if (counter == 0) {
+            System.out.println("No insurance info found with the selected threshold");
         }
     }
 
     public void getInsuranceUnderThreshold(double threshold) {
+        int counter = 0;
         for (InsuranceInfo insurance: insuranceListing
         ) {
             if (insurance.getInsuranceValue() <= threshold) {
                 System.out.println("[Property information] {\n" + insurance.getProperty() + "\n" + "The insurance value: " + insurance.getInsuranceValue() + "\n}\n");
+            counter += 1;
             }
+        }
+        if (counter == 0) {
+            System.out.println("No insurance info found with the selected threshold");
         }
     }
 

@@ -44,10 +44,16 @@ public class Main {
 
         System.out.println("Insert threshold to see the properties over this value: ");
         double threshold = input.nextDouble();
+        if (threshold < 0) {
+            System.out.println("The selected threshold cannot be negative");
+        }
         isInfoContainer.getInsuranceOverThreshold(threshold);
 
         System.out.println("Insert threshold to see the properties under this value: ");
         threshold = input.nextDouble();
+        if (threshold < 0) {
+            System.out.println("The selected threshold cannot be negative");
+        }
         isInfoContainer.getInsuranceUnderThreshold(threshold);
 
     }
