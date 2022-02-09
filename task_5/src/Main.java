@@ -73,8 +73,6 @@ public class Main {
                         Asukas asukas = new Asukas(null);
                         asukas.setName(residents);
                         residentList.add(residentList.size(), asukas);
-                        System.out.println(asunto.getAsukas());
-                        System.out.println(residentList.size());
                     }
 
                     asunto.setArea(area);

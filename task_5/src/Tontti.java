@@ -55,13 +55,13 @@ public class Tontti {
                 "area= " + getArea() + " " +
                 "\n}");
         System.out.println("building type: " +
-                rakennus.getClass().getName() +
+                getRakennus().getClass().getName() +
                 "");
         System.out.println("building apartments: " +
-                rakennus.getApartmentsAmnt() +
+                getRakennus().getApartmentsAmnt() +
                 "");
         System.out.println("Apartments information: \n");
-        rakennus.printBuilding();
+        getRakennus().printBuilding();
     }
 
     @Override

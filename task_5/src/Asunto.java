@@ -40,10 +40,6 @@ public class Asunto {
         } else this.area = area;
     }
 
-    public ArrayList<Asukas> getResidentsList() {
-        return residentsList;
-    }
-
     public void setResidentsList(ArrayList<Asukas> residentsList) {
         this.residentsList = residentsList;
     }
