@@ -1,41 +1,40 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 abstract class Rakennus {
 
-    private int buildingsAmnt;
-    private double rooms;
-    private double area;
-    private ArrayList<Asukas> residentsList = new ArrayList<>();
+    private int apartmentsAmnt;
+//   private HashMap<Double, Integer> apartments = new HashMap<Double, Integer>();
+//    private ArrayList<Asukas> residentsList = new ArrayList<>();
+    private ArrayList<Asunto> apartmentsList = new ArrayList<Asunto>();
 
-    public Rakennus(double area, double rooms, int buildingsAmnt) {
-        this.area = area;
-        this.rooms = rooms;
-        this.buildingsAmnt = buildingsAmnt;
-
+    public Rakennus(int apartmentsAmnt, ArrayList<Asunto> apartmentsList) {
+        this.apartmentsAmnt = apartmentsAmnt;
+        this.apartmentsList = apartmentsList;
+//        this.apartments = apartments;
+//        this.residentsList = residentsList;
     }
 
-    public double getArea() {
-        return area;
+    public ArrayList<Asunto> getApartmentsList() {
+        return apartmentsList;
     }
 
-    public void setArea(double area) {
-        if (area < 0) {
-            System.out.println("The area of the plot cannot be negative!");
-        } else this.area = area;
+    public void setApartmentsList(ArrayList<Asunto> apartmentsList) {
+        this.apartmentsList = apartmentsList;
     }
 
-    public double getRooms() {
-        return rooms;
+    public void addApartmentsList(Asunto asunto) {
+        this.apartmentsList.add(this.apartmentsList.size(), asunto);
     }
 
-    public void setRooms(double rooms) {
-        if (rooms < 0) {
-            System.out.println("The amount of rooms in a building cannot be negative");
-        } else this.rooms = rooms;
+    public int getApartmentsAmnt() {
+        return apartmentsAmnt;
     }
 
-    @Override
-    public String toString() {
-        return "" + "area=" + area + ", rooms=" + rooms + ",\nresidents: " + "";
+    public void setApartmentsAmnt(int apartmentsAmnt) {
+        this.apartmentsAmnt = apartmentsAmnt;
     }
+
+    public abstract void printBuilding();
+
 }

@@ -39,8 +39,26 @@ public class Tontti {
         } else this.area = area;
     }
 
+    public void printPlot() {
+        System.out.println("" +
+                "Plot = {\n" +
+                "name= " + getName() + " " +
+                "address= " + getAddress() + " " +
+                "area= " + getArea() + " " +
+                "\n}");
+        System.out.println("building type: " +
+                rakennus.getClass().getName() +
+                "");
+        System.out.println("building apartments: " +
+                rakennus.getApartmentsAmnt() +
+                "");
+        System.out.println("Apartments information: ");
+        rakennus.printBuilding();
+    }
+
     @Override
     public String toString() {
-        return "Plot = {" + "name=" + this.name + ", address=" + this.address + ", area=" + this.area + ",\nbuilding: " + this.rakennus + '}';
+        return "Plot = {" + "name=" + this.name + ", address=" + this.address + ", area=" + this.area + ",\nbuilding: " +rakennus + "" + '}';
     }
+
 }
