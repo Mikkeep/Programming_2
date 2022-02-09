@@ -19,7 +19,8 @@ public class Main {
         // takes away the empty newLine() to not mess up any future inputs
         input.nextLine();
 
-        ArrayList<Asukas> residentList = new ArrayList<>();
+        // Init apartment listing here since it does not need resets
+        // Unlike residents list, since we add new residents to each apartment
         ArrayList<Asunto> apartmentsList = new ArrayList<>();
 
         // as stated in the ENG documentation, 1.kerrostalo, 2.rivitalo ja 3.omakotitalo
@@ -27,6 +28,7 @@ public class Main {
         System.out.println("1. Block of flats");
         System.out.println("2. Terraced house");
         System.out.println("3. Detached house");
+        System.out.println("4. Exit Program (Execution will also stop after other selections completion)");
 
         int choice = input.nextInt();
         input.nextLine();
@@ -44,8 +46,9 @@ public class Main {
                 Kerrostalo kerrostalo = new Kerrostalo(0, apartmentsList);
                 kerrostalo.setApartmentsAmnt(apartmentAmnt);
                 for (int i = 0; i < apartmentAmnt; i++) {
-
-                    residentList.clear();
+                    // resident list init for every Asunto object
+                    ArrayList<Asukas> residentList = new ArrayList<>();
+                    Asunto asunto = new Asunto(0, 0, residentList);
 
                     System.out.printf("Please give %d. apartment area: \n", i + 1);
                     double area = input.nextDouble();
@@ -64,20 +67,26 @@ public class Main {
                     input.nextLine();
 
                     for (int j = 0; j < residentAmount; j++) {
+
                         System.out.printf("Please give the name of the %d. resident: ", j+1);
                         String residents = input.nextLine();
                         Asukas asukas = new Asukas(null);
                         asukas.setName(residents);
                         residentList.add(residentList.size(), asukas);
+                        System.out.println(asunto.getAsukas());
+                        System.out.println(residentList.size());
                     }
-                    Asunto asunto = new Asunto(0, 0, null);
-                    asunto.setAsukas(residentList);
+
                     asunto.setArea(area);
                     asunto.setRooms(rooms);
 
                     kerrostalo.addApartmentsList(asunto);
                 }
-                Tontti tontti = new Tontti(plotName, plotAddress, plotArea, kerrostalo);
+                Tontti tontti = new Tontti("", "", 0, null);
+                tontti.setName(plotName);
+                tontti.setAddress(plotAddress);
+                tontti.setArea(plotArea);
+                tontti.setRakennus(kerrostalo);
                 tontti.printPlot();
             }
 
@@ -89,9 +98,14 @@ public class Main {
                     System.exit(1);
                 }
                 input.nextLine();
-                Rivitalo rivitalo = new Rivitalo(0, apartmentsList);
+                Rivitalo rivitalo = new Rivitalo(0, null);
+                rivitalo.setApartmentsList(apartmentsList);
                 rivitalo.setApartmentsAmnt(apartmentAmnt);
                 for (int i = 0; i < apartmentAmnt; i++) {
+
+                    ArrayList<Asukas> residentList = new ArrayList<>();
+                    Asunto asunto = new Asunto(0, 0, null);
+                    asunto.setResidentsList(residentList);
 
                     System.out.printf("Please give %d. apartment area: \n", i + 1);
                     double area = input.nextDouble();
@@ -110,26 +124,32 @@ public class Main {
                     input.nextLine();
 
                     for (int j = 0; j < residentAmount; j++) {
+
                         System.out.printf("Please give the name of the %d. resident: ", j+1);
                         String residents = input.nextLine();
                         Asukas asukas = new Asukas(null);
                         asukas.setName(residents);
                         residentList.add(residentList.size(), asukas);
                     }
-                    Asunto asunto = new Asunto(0, 0, null);
-                    asunto.setAsukas(residentList);
+
                     asunto.setArea(area);
                     asunto.setRooms(rooms);
 
                     rivitalo.addApartmentsList(asunto);
                 }
-                Tontti tontti = new Tontti(plotName, plotAddress, plotArea, rivitalo);
+
+                Tontti tontti = new Tontti("", "", 0, null);
+                tontti.setName(plotName);
+                tontti.setAddress(plotAddress);
+                tontti.setArea(plotArea);
+                tontti.setRakennus(rivitalo);
                 tontti.printPlot();
             }
 
             case 3 -> {
                 int apartmentAmnt = 1;
-                Omakotitalo omakotitalo = new Omakotitalo(0, apartmentsList);
+                Omakotitalo omakotitalo = new Omakotitalo(0, null);
+                omakotitalo.setApartmentsList(apartmentsList);
                 omakotitalo.setApartmentsAmnt(apartmentAmnt);
 
                 System.out.println("Please give the apartment area: ");
@@ -157,6 +177,7 @@ public class Main {
                 }
                 input.nextLine();
 
+                ArrayList<Asukas> residentList = new ArrayList<>();
                 for (int j = 0; j < residentAmount; j++) {
                     System.out.printf("Please give the name of the %d. resident: ", j+1);
                     String residents = input.nextLine();
@@ -171,8 +192,17 @@ public class Main {
 
                 omakotitalo.addApartmentsList(asunto);
 
-                Tontti tontti = new Tontti(plotName, plotAddress, plotArea, omakotitalo);
+                Tontti tontti = new Tontti("", "", 0, null);
+                tontti.setName(plotName);
+                tontti.setAddress(plotAddress);
+                tontti.setArea(plotArea);
+                tontti.setRakennus(omakotitalo);
                 tontti.printPlot();
+            }
+
+            case 4 -> {
+                System.out.println("Exiting program\n");
+                System.exit(1);
             }
 
             default -> throw new IllegalStateException("Unexpected value: " + input);

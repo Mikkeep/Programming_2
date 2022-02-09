@@ -1,18 +1,13 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 abstract class Rakennus {
 
     private int apartmentsAmnt;
-//   private HashMap<Double, Integer> apartments = new HashMap<Double, Integer>();
-//    private ArrayList<Asukas> residentsList = new ArrayList<>();
-    private ArrayList<Asunto> apartmentsList = new ArrayList<Asunto>();
+    private ArrayList<Asunto> apartmentsList;
 
     public Rakennus(int apartmentsAmnt, ArrayList<Asunto> apartmentsList) {
         this.apartmentsAmnt = apartmentsAmnt;
         this.apartmentsList = apartmentsList;
-//        this.apartments = apartments;
-//        this.residentsList = residentsList;
     }
 
     public ArrayList<Asunto> getApartmentsList() {

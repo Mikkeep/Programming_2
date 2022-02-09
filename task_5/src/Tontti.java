@@ -39,6 +39,14 @@ public class Tontti {
         } else this.area = area;
     }
 
+    public Rakennus getRakennus() {
+        return rakennus;
+    }
+
+    public void setRakennus(Rakennus rakennus) {
+        this.rakennus = rakennus;
+    }
+
     public void printPlot() {
         System.out.println("" +
                 "Plot = {\n" +
@@ -52,7 +60,7 @@ public class Tontti {
         System.out.println("building apartments: " +
                 rakennus.getApartmentsAmnt() +
                 "");
-        System.out.println("Apartments information: ");
+        System.out.println("Apartments information: \n");
         rakennus.printBuilding();
     }
 

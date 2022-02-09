@@ -4,8 +4,7 @@ public class Asunto {
 
     private double rooms;
     private double area;
-//    private Asukas asukas;
-    private ArrayList<Asukas> residentsList = new ArrayList<>();
+    private ArrayList<Asukas> residentsList;
 
     public Asunto(double rooms, double area, ArrayList<Asukas> asukas) {
         this.rooms = rooms;
@@ -15,10 +14,6 @@ public class Asunto {
 
     public ArrayList<Asukas> getAsukas() {
         return residentsList;
-    }
-
-    public void addAsukas(Asukas asukas) {
-        this.residentsList.add(this.residentsList.size(), asukas);
     }
 
     public void setAsukas(ArrayList<Asukas> asukas) {
@@ -32,8 +27,7 @@ public class Asunto {
     public void setRooms(double rooms) {
         if (rooms < 1) {
             System.out.println("The apartment should have at least one room!");
-        }
-        else this.rooms = rooms;
+        } else this.rooms = rooms;
     }
 
     public double getArea() {
@@ -44,5 +38,13 @@ public class Asunto {
         if (area < 0) {
             System.out.println("The area of an apartment cannot be negative!");
         } else this.area = area;
+    }
+
+    public ArrayList<Asukas> getResidentsList() {
+        return residentsList;
+    }
+
+    public void setResidentsList(ArrayList<Asukas> residentsList) {
+        this.residentsList = residentsList;
     }
 }

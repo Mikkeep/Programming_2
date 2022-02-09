@@ -1,7 +1,6 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class Kerrostalo extends Rakennus{
+public class Kerrostalo extends Rakennus {
 
     public Kerrostalo(int apartmentsAmnt, ArrayList<Asunto> apartmentsList) {
         super(apartmentsAmnt, apartmentsList);
@@ -9,18 +8,19 @@ public class Kerrostalo extends Rakennus{
 
     @Override
     public void printBuilding() {
-        for (Asunto asunto: getApartmentsList()
+        for (Asunto asunto : getApartmentsList()
         ) {
             System.out.println("" +
                     "Apartment size: " + asunto.getArea() + "\n" +
                     "Apartment rooms: " + asunto.getRooms() + "\n" +
                     "Residents of the apartment: ");
-                    for (Asukas asukas: asunto.getAsukas()) {
-                        System.out.println("" +
-                                "name: " +
-                                asukas.getName() +
-                                " ");
+            for (Asukas asukas : asunto.getAsukas()) {
+                System.out.println("" +
+                        "name: " +
+                        asukas.getName() +
+                        " ");
             }
+            System.out.println("\n");
         }
     }
 
