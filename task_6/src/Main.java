@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -21,9 +22,7 @@ public class Main {
 
         switch (option) {
 
-            case 1 -> {
-                System.out.println("Populating wordlist with all of available words");
-            }
+            case 1 -> System.out.println("Populating wordlist with all of available words");
 
             case 2 -> {
                 System.out.println("Please provide wanted length for the words: ");
@@ -51,9 +50,21 @@ public class Main {
 
         while (true) {
 
-            System.out.println("Enter character: ");
-            char guess = input.next().charAt(0);
-            guess = Character.toUpperCase(guess);
+            char guess;
+            try {
+                System.out.println("Enter character: ");
+                guess = input.next().charAt(0);
+                if (Character.isLetter(guess)) {
+                    guess = Character.toUpperCase(guess);
+                }
+                else {
+                    System.out.println("Please guess only alphabets");
+                    continue;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Please input only characters");
+                continue;
+            }
 
             boolean result = hirsipuu.arvaa(guess);
             if (result) {
@@ -66,6 +77,8 @@ public class Main {
             if (gameState) {
                 if (hirsipuu.arvauksiaOnJaljella() == 0) {
                     System.out.println("Computer wins this game of hangman!");
+                    System.out.print("The hidden word was: ");
+                    System.out.println(hirsipuu.getGuessedWord());
                 } else {
                     System.out.println("Player wins this game of hangman!");
                     System.out.print("The guessed word was: ");

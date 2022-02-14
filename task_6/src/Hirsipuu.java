@@ -23,6 +23,10 @@ public class Hirsipuu {
         System.out.println(hiddenWord);
     }
 
+    public String getGuessedWord() {
+        return guessedWord;
+    }
+
     public void setGuessedWord() {
         Random random = new Random();
         this.guessedWord = sanalista.annaSanat().get(random.nextInt(sanalista.annaSanat().size())).toUpperCase();
